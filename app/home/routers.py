@@ -8,10 +8,9 @@ from app.settings import APP_DIRECTORY_PATH
 
 router = APIRouter()
 
-static_dir = os.path.join(APP_DIRECTORY_PATH, 'home', 'static')
-print(os.path.join(static_dir, 'templates'))
+templates = Jinja2Templates(directory=os.path.join(APP_DIRECTORY_PATH, 'home', 'templates'))
 
-templates = Jinja2Templates(directory=os.path.join(static_dir, 'templates'))
-@router.get('/home/{id}', response_class=HTMLResponse)
-async def home(request: Request, id: str):
-    return templates.TemplateResponse('home.html', {'request': request, 'id': id})
+
+@router.get('/home', response_class=HTMLResponse)
+async def home(request: Request):
+    return templates.TemplateResponse('home.html', {'request': request})
