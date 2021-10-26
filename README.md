@@ -13,3 +13,7 @@ pip install -r requirements.txt
 python runserver.py
 
 go to http://127.0.0.1:9080/docs to see all the endpoints
+
+### TODO
+
+Add templates to make the representation more visual
